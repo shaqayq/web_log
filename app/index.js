@@ -2,11 +2,8 @@ const express = require('express')
 const app = express()
 
 require('./bootstrap')(app)
+require('./routes')(app)
 
-
-app.get('/', function (req, res) {
-  res.render('dashboard', { layout: 'main', /* additional data */ });
-});
 
 module.exports =() =>{
         const port = process.env.APP_PORT;
