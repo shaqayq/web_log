@@ -1,5 +1,5 @@
 const adminRoute = require('./admin')
-const postRoute = require('/post')
+const postRoute = require('./post')
 module.exports = app => {
 
     app.use('/admin', adminRoute),
