@@ -5,7 +5,7 @@ require('./bootstrap')(app)
 
 
 app.get('/', function (req, res) {
-  res.render('main', { layout: false, /* additional data */ });
+  res.render('dashboard', { layout: 'main', /* additional data */ });
 });
 
 module.exports =() =>{
