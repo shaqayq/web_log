@@ -5,3 +5,9 @@ exports.getAll=async(req,res)=>{
    console.log(posts);
     return posts; 
 }
+
+exports.storePost = async(data) => {
+
+    const [result]= db.query('INSERT INTO posts SET?' , [data]);
+    return result;
+}
