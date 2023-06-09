@@ -23,12 +23,13 @@ exports.create =async(req , res) => {
 
 
 exports.store = async (req, res) => {
+
   const validateData = [
    
-    body('title').notEmpty().withMessage('Title is required'),
-    body('slug').notEmpty().withMessage('Slug is required'),
-    body('content').notEmpty().withMessage('Content is required'),
-    body('status').notEmpty().withMessage('Status is required'),
+    body('title').notEmpty().withMessage('*** Title is required ***'),
+    body('slug').notEmpty().withMessage('*** Slug is required ***'),
+    body('content').notEmpty().withMessage('*** Content is required ***'),
+   
   ];
 
   for (const validator of validateData) {
@@ -36,7 +37,7 @@ exports.store = async (req, res) => {
   }
 
   const errors = validationResult(req);
-
+   // console.log(errors);
   if (!errors.isEmpty()) {
  
     return res.render('newPost', { errors: errors.array() });
@@ -52,9 +53,9 @@ exports.store = async (req, res) => {
     status: status,
   };
 
-   postModel.storePost(data);
-   console.log("storeMethod");
-  // res.send(req.body);
+   //postModel.storePost(data);
+   
+ 
  return res.redirect("/post")
 
 };

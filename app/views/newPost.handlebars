@@ -3,6 +3,17 @@
         background-color: #cb0c9f;
     color: #fff;
     }
+    .error-messages{
+     
+     color: red;
+     border: 1px red solid;
+    border-radius: 20px;
+    margin: 20px;
+    }
+
+    .error-messages li {
+       list-style-type: none; 
+    }
  </style>
  <div class="container-fluid py-4">
      
@@ -12,7 +23,7 @@
               <div class="card-header text-center pt-4">
                 <h5>New Post</h5>
               </div>
-            {{#if errors}}
+             {{#if errors}}
               <div class="error-messages">
                 <ul>
                   {{#each errors}}
@@ -20,13 +31,14 @@
                   {{/each}}
                 </ul>
               </div>
-            {{/if}}
+            {{/if}} 
               <div class="card-body">
                 <form role="form text-left" action="/post/store" method="post">
                  <div class="row">
                     <div class="mb-3 col-lg-6">
                         <label>Post Title:</label>
                     <input type="text" class="form-control" placeholder="Title" aria-label="Title" name="title">
+                
                   </div>
                   <div class="mb-3 col-lg-6">
                      <label>Post Slug:</label>
@@ -36,9 +48,7 @@
                   
                   <div class="mb-3">
                      <label>Post Content:</label>
-                   <textarea name="content" class="form-control" aria-label="Content" aria-describedby="email-addon" heigth="200px">
-
-                   </textarea>
+                   <textarea name="content" class="form-control" aria-label="Content" aria-describedby="email-addon" heigth="200px"></textarea>
                   </div>
                   <h6>Status</h6>
                   <div class="form-check ">
