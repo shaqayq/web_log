@@ -12,7 +12,15 @@
               <div class="card-header text-center pt-4">
                 <h5>New Post</h5>
               </div>
-            
+            {{#if errors}}
+              <div class="error-messages">
+                <ul>
+                  {{#each errors}}
+                    <li>{{msg}}</li>
+                  {{/each}}
+                </ul>
+              </div>
+            {{/if}}
               <div class="card-body">
                 <form role="form text-left" action="/post/store" method="post">
                  <div class="row">

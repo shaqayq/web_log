@@ -1,35 +1,60 @@
+const { validationResult  , body} = require('express-validator');
+const moment = require('moment')
 const postModel = require('../models/posts')
-const validation = require('../validators/postValidation')
-exports.index =async(req , res) => {
 
-    const allPost =await postModel.getAll();
+
+exports.index =async(req, res) => {
+
+    const posts =await postModel.getAll();
+   const allPost= posts.map(post=>({
+    ...post, 
+    created_at: moment(post.created_at).format('YYYY-MM-DD')
+   }))
     res.render('posts', {layout: 'main' , allPost});
 }
 
 exports.create =async(req , res) => {
 
-    
+    const error = req.body.error;
+   
     res.render('newPost', {layout: 'main'});
 }
 
-exports.store =async(req , res) => {
-    const {title , slug , content , status} = req.body
-    const data={
-        author_id: 1, 
-        title: title,
-        slug: slug,
-        content: content,
-        status: status
-    }
-   const checkValidation= validation(data);
-   if (checkValidation.length == 0) {
-  
-    const errorMessage = checkValidation.join(', ');
-    res.redirect(`/post/create?error=${errorMessage}`);
- 
-  } else {
-    postModel.storePost(data);
-    res.send(req.body);
-    
+
+
+exports.store = async (req, res) => {
+  const validateData = [
+   
+    body('title').notEmpty().withMessage('Title is required'),
+    body('slug').notEmpty().withMessage('Slug is required'),
+    body('content').notEmpty().withMessage('Content is required'),
+    body('status').notEmpty().withMessage('Status is required'),
+  ];
+
+  for (const validator of validateData) {
+    await validator.run(req);
   }
-}
+
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+ 
+    return res.render('newPost', { errors: errors.array() });
+
+  } 
+
+  const { title, slug, content, status } = req.body;
+  const data = {
+    author_id: 1,
+    title: title,
+    slug: slug,
+    content: content,
+    status: status,
+  };
+
+   postModel.storePost(data);
+   console.log("storeMethod");
+  // res.send(req.body);
+ return res.redirect("/post")
+
+};
