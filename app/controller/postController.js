@@ -60,6 +60,9 @@ exports.store = async (req, res) => {
 
 };
 
-exports.delete = (req , res) => {
-
+exports.deletePost = (req , res) => {
+  const {postId} = req.params;
+  console.log(postId);
+  postModel.delete(postId);
+  res.redirect('/post')
 }

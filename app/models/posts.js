@@ -11,3 +11,9 @@ exports.storePost = async(data) => {
     const [result]= await db.query('INSERT INTO posts SET?' , data);
     return result;
 }
+
+exports.delete = async(id) => {
+  
+    const result = db.query('DELETE FROM posts WHERE id=?' , id )
+    return result;
+}
