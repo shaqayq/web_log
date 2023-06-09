@@ -53,7 +53,7 @@ exports.store = async (req, res) => {
     status: status,
   };
 
-   //postModel.storePost(data);
+   postModel.storePost(data);
    
  
  return res.redirect("/post")

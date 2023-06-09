@@ -51,15 +51,30 @@
                       <td class="align-middle text-center text-sm">
                          <p class="text-xs font-weight-bold mb-0">{{created_at}}</p>
                       </td>
-                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                      </td>
+                   <td class="align-middle text-center text-sm">
+                      {{#isEqual status 0}}
+                        <span class="badge badge-sm bg-gradient-danger">Draft</span>
+                      {{else}}
+                        {{#isEqual status 1}}
+                          <span class="badge badge-sm bg-gradient-success">Publish</span>
+                        {{else}}
+                          {{#isEqual status 2}}
+                            <span class="badge badge-sm bg-gradient-warning">Under_Review</span>
+                          {{/isEqual}}
+                        {{/isEqual}}
+                      {{/isEqual}}
+                    </td>
+
+
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold">{{views}}</span>
                       </td>
                       <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                           Edit
+                        </a> | 
+                         <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          Delete
                         </a>
                       </td>
                     </tr>
