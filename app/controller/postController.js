@@ -1,4 +1,5 @@
 const postModel = require('../models/posts')
+const validation = require('../validators/postValidation')
 exports.index =async(req , res) => {
 
     const allPost =await postModel.getAll();
@@ -20,8 +21,15 @@ exports.store =async(req , res) => {
         content: content,
         status: status
     }
-    
+   const checkValidation= validation(data);
+   if (checkValidation.length == 0) {
+  
+    const errorMessage = checkValidation.join(', ');
+    res.redirect(`/post/create?error=${errorMessage}`);
+ 
+  } else {
     postModel.storePost(data);
-
-  res.send(req.body);
+    res.send(req.body);
+    
+  }
 }
