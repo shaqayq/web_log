@@ -59,3 +59,7 @@ exports.store = async (req, res) => {
  return res.redirect("/post")
 
 };
+
+exports.delete = (req , res) => {
+
+}
