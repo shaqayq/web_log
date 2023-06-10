@@ -1,15 +1,16 @@
 const { validationResult  , body} = require('express-validator');
 const moment = require('moment')
-const CommentModel = require('')
+const CommentModel = require('../models/comment')
 
 
 exports.index =async(req, res) => {
     const comments =await CommentModel.getAll();
-    const allcomment= comments.map(comment=>({
-        ...comments, 
+    const allComment= comments.map(comment =>({
+        ...comment , 
         created_at: moment(comment.created_at).format('YYYY-MM-DD')
     }))
-        res.render('comment/', {layout: 'main' , allcomment});
+    console.log(allComment);
+        res.render('comment/', {layout: 'main' , allComment});
 }
 
 // exports.create =async(req , res) => {
@@ -48,12 +49,13 @@ exports.index =async(req, res) => {
 
 // };
 
-// exports.deletePost = (req , res) => {
-//   const {postId} = req.params;
+exports.deleteComment = (req , res) => {
+  const {id} = req.params;
  
-//   postModel.delete(postId);
-//   res.redirect('/post')
-// }
+    CommentModel.delete(id);
+ 
+  res.redirect('/comment')
+}
 
 // exports.findPost = async(req , res) => {
 

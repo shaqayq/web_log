@@ -1,8 +1,7 @@
 const db = require('../../database/mysql')
 
-exports.getAll=async(req,res)=>{
-    const [comments] = await db.query('SELECT c.* , u.full_name FROM comments c join users u on p.author_id = u.id');
-   
+exports.getAll=async()=>{
+    const [comments] = await db.query('SELECT c.* , p.title FROM comments c join posts p on c.post_id = p.id');
     return comments; 
 }
 
@@ -12,10 +11,10 @@ exports.getAll=async(req,res)=>{
 //     return result;
 // }
 
-// exports.delete = async(id) => {
-//     const result = await db.query('DELETE FROM posts WHERE id=?' , id )
-//     return result;
-// }
+exports.delete = async(id) => {
+    const result = await db.query('DELETE FROM comments WHERE id=?' , id )
+    return result;
+}
 
 // exports.findById = async(id)=>{
 //     const result = await db.query("SELECT * FROM posts WHERE id=?" , id)
