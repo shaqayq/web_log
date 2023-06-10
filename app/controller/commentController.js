@@ -57,6 +57,20 @@ exports.deleteComment = (req , res) => {
   res.redirect('/comment')
 }
 
+exports.rejectComment= async(req , res)=>{
+   const {id}= req.params;
+
+    await CommentModel.reject(id);
+    res.redirect('/comment')
+}
+
+exports.approveComment= async(req , res)=>{
+    const {id}= req.params;
+ 
+     await CommentModel.approve(id);
+     res.redirect('/comment')
+ }
+
 // exports.findPost = async(req , res) => {
 
 //   const {postId} = req.query; 

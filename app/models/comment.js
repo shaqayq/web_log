@@ -16,6 +16,16 @@ exports.delete = async(id) => {
     return result;
 }
 
+exports.reject = async(id)=>{
+    const result = await db.query('UPDATE comments SET status = 0 WHERE id=?' , id)
+    return result;
+}
+
+exports.approve = async(id)=>{
+    const result = await db.query('UPDATE comments SET status = 1 WHERE id=?' , id)
+    return result;
+}
+
 // exports.findById = async(id)=>{
 //     const result = await db.query("SELECT * FROM posts WHERE id=?" , id)
 //     return result

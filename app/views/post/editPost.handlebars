@@ -57,13 +57,13 @@
                   </div>
                   <h6>Status</h6>
                   <div class="form-check ">
-                    <input class="form-check-input" type="radio" name="status" value="0" id="flexCheckDefault" checked><p>Draft</p>
+                    <input class="form-check-input" type="radio" name="status" value="0" id="flexCheckDefault" {{#isSelectedStatus 0}} checked{{/isSelectedStatus}}><p>Draft</p>
                   </div>
                   <div class="form-check  ">
-                    <input class="form-check-input" type="radio" name="status" value="1" id="flexCheckDefault"><p>Publication</p>
+                    <input class="form-check-input" type="radio" name="status" value="1" id="flexCheckDefault" {{#isSelectedStatus 1}} checked{{/isSelectedStatus}}><p>Publication</p>
                   </div>
                    <div class="form-check  ">
-                    <input class="form-check-input" type="radio" name="status" value="2" id="flexCheckDefault"><p>Under Review</p>
+                    <input class="form-check-input" type="radio" name="status" value="2" id="flexCheckDefault" {{#isSelectedStatus 2}} checked{{/isSelectedStatus}}><p>Under Review</p>
                   </div>
                    {{/each}}
                   <div class="text-center">

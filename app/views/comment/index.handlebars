@@ -1,7 +1,17 @@
  <style>
-  .add {
-      background-color: #cb0c9f !important;
-    color: #fff;
+  .approve{
+    color: #25d54f;
+    font-weight: 900;
+  }
+
+  .reject{
+    color: #fbcf33;
+    font-weight: 900;
+  }
+
+  .delete {
+    color: #ea0606;
+    font-weight: 900;
   }
  </style>
  <div class="container-fluid py-4">
@@ -20,6 +30,7 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Title</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Comment</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
                       
                       <th class="text-secondary opacity-7"></th>
@@ -49,17 +60,30 @@
                       <td class="align-middle text-center text-sm">
                          <p class="text-xs font-weight-bold mb-0">{{comment}}</p>
                       </td>
-                  
+                     <td class="align-middle text-center text-sm">
+                      {{#isEqual status 0}}
+                        <span class="badge badge-sm bg-gradient-warning">Reject</span>
+                      {{else}}
+                        {{#isEqual status 1}}
+                          <span class="badge badge-sm bg-gradient-success">Approve</span>
+                        
+                         
+                        {{/isEqual}}
+                      {{/isEqual}}
+                    </td>
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold">{{created_at}}</span>
                       </td>
                       <td class="align-middle">
                         
-                        <a href="/post/editPost?postId={{id}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
+                        <a href="/comment/approve/{{id}}" class="approve" >
+                          APPROVE
                         </a> | 
-                         <a href="/comment/delete/{{id}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Delete
+                         <a href="/comment/reject/{{id}}" class="reject" >
+                          REJECT
+                        </a> | 
+                         <a href="/comment/delete/{{id}}" class="delete" >
+                          DELETE
                         </a>
                       </td>
                     </tr>
