@@ -10,7 +10,7 @@ exports.index =async(req, res) => {
     ...post, 
     created_at: moment(post.created_at).format('YYYY-MM-DD')
    }))
-    res.render('post/posts', {layout: 'main' , allPost});
+    res.render('post/', {layout: 'main' , allPost});
 }
 
 exports.create =async(req , res) => {
