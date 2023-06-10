@@ -20,16 +20,12 @@ exports.create =async(req , res) => {
     res.render('newPost', {layout: 'main'});
 }
 
-
-
 exports.store = async (req, res) => {
 
-  const validateData = [
-   
+  const validateData = [   
     body('title').notEmpty().withMessage('*** Title is required ***'),
     body('slug').notEmpty().withMessage('*** Slug is required ***'),
-    body('content').notEmpty().withMessage('*** Content is required ***'),
-   
+    body('content').notEmpty().withMessage('*** Content is required ***'), 
   ];
 
   for (const validator of validateData) {
@@ -37,11 +33,8 @@ exports.store = async (req, res) => {
   }
 
   const errors = validationResult(req);
-   // console.log(errors);
   if (!errors.isEmpty()) {
- 
     return res.render('newPost', { errors: errors.array() });
-
   } 
 
   const { title, slug, content, status } = req.body;
@@ -54,15 +47,35 @@ exports.store = async (req, res) => {
   };
 
    postModel.storePost(data);
-   
- 
- return res.redirect("/post")
+   return res.redirect("/post")
 
 };
 
 exports.deletePost = (req , res) => {
   const {postId} = req.params;
-  console.log(postId);
+ 
   postModel.delete(postId);
+  res.redirect('/post')
+}
+
+exports.findPost = async(req , res) => {
+
+  const {postId} = req.query; 
+  const [post] = await postModel.findById(postId);
+  return res.render('editPost', {layout: 'main' , post});
+}
+
+
+exports.updatePost = (req , res) => {
+  const {postId} = req.params;
+  const { title, slug, content, status } = req.body;
+  const data = {
+    author_id: 1,
+    title: title,
+    slug: slug,
+    content: content,
+    status: status,
+  };
+  postModel.update(data , postId)
   res.redirect('/post')
 }

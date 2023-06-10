@@ -13,7 +13,16 @@ exports.storePost = async(data) => {
 }
 
 exports.delete = async(id) => {
-  
-    const result = db.query('DELETE FROM posts WHERE id=?' , id )
+    const result = await db.query('DELETE FROM posts WHERE id=?' , id )
+    return result;
+}
+
+exports.findById = async(id)=>{
+    const result = await db.query("SELECT * FROM posts WHERE id=?" , id)
+    return result
+}
+
+exports.update = async(data , id)=>{
+    const result = db.query('UPDATE posts SET ? WHERE id=?' , [data , id])
     return result;
 }
