@@ -1,3 +1,9 @@
+ <style>
+  .add {
+      background-color: #cb0c9f !important;
+    color: #fff;
+  }
+ </style>
  <div class="container-fluid py-4">
       <div class="card-header pb-0 p-3">
                   <div class="row">
@@ -5,7 +11,7 @@
                       
                     </div>
                     <div class="col-6 text-end">
-                      <a class="btn bg-warning mb-0" href="/post/create"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add New Post</a>
+                      <a class="btn mb-0 add" href="/post/create"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add New Post </a>
                     </div>
                   </div>
                 </div>
@@ -34,9 +40,7 @@
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
-                          </div>
+                       
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">{{full_name}}</h6>
                             <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
@@ -70,10 +74,11 @@
                         <span class="text-secondary text-xs font-weight-bold">{{views}}</span>
                       </td>
                       <td class="align-middle">
-                        <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        
+                        <a href="/post/editPost?postId={{id}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                           Edit
                         </a> | 
-                         <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                         <a href="/post/delete/{{id}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                           Delete
                         </a>
                       </td>
