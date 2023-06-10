@@ -10,14 +10,14 @@ exports.index =async(req, res) => {
     ...post, 
     created_at: moment(post.created_at).format('YYYY-MM-DD')
    }))
-    res.render('posts', {layout: 'main' , allPost});
+    res.render('post/posts', {layout: 'main' , allPost});
 }
 
 exports.create =async(req , res) => {
 
     const error = req.body.error;
    
-    res.render('newPost', {layout: 'main'});
+    res.render('post/newPost', {layout: 'main'});
 }
 
 exports.store = async (req, res) => {
@@ -62,7 +62,7 @@ exports.findPost = async(req , res) => {
 
   const {postId} = req.query; 
   const [post] = await postModel.findById(postId);
-  return res.render('editPost', {layout: 'main' , post});
+  return res.render('post/editPost', {layout: 'main' , post});
 }
 
 
