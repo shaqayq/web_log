@@ -27,49 +27,39 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Title</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Publish Date</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Views</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                    
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
+                     
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
                       <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
                   <tbody>
-                    {{!-- {{#each alluser}}
+                    {{#each alluser}}
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
                        
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">{{full_name}}</h6>
-                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                            <p class="text-xs text-secondary mb-0">{{email}}</p>
                           </div>
                         </div>
                       </td>
-                      <td>
-                        <h6 class="mb-0 text-sm">{{title}}</h6>
-                        <p class="text-xs font-weight-bold mb-0">{{slug}}</p>
-                        
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                         <p class="text-xs font-weight-bold mb-0">{{created_at}}</p>
-                      </td>
-                   <td class="align-middle text-center text-sm">
-                      {{#isEqual status 0}}
-                        <span class="badge badge-sm bg-gradient-danger">Draft</span>
+                    <td class="align-middle text-center text-sm">
+                      {{#isEqual role 0}}
+                         <p class="text-xs text-secondary mb-0">user</p>
                       {{else}}
-                        {{#isEqual status 1}}
-                          <span class="badge badge-sm bg-gradient-success">Publish</span>
-                        {{else}}
-                          {{#isEqual status 2}}
-                            <span class="badge badge-sm bg-gradient-warning">Under_Review</span>
-                          {{/isEqual}}
+                        {{#isEqual role 1}}
+                         <p class="text-xs text-secondary mb-0">Admin</p>
+                        
                         {{/isEqual}}
                       {{/isEqual}}
                     </td>
-
-
+                      <td class="align-middle text-center text-sm">
+                         <p class="text-xs font-weight-bold mb-0">{{created_at}}</p>
+                      </td>
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold">{{views}}</span>
                       </td>
@@ -83,10 +73,7 @@
                         </a>
                       </td>
                     </tr>
-                    {{/each}} --}}
-                    
-                   
-                   
+                    {{/each}} 
                   </tbody>
                 </table>
               </div>
@@ -94,5 +81,4 @@
           </div>
         </div>
       </div>
-     
     </div>

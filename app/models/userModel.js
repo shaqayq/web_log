@@ -1,7 +1,7 @@
 const db = require('../../database/mysql')
 
 exports.getAll=async(req,res)=>{
-    const [users] = await db.query('SELECT p.* , u.full_name FROM users p join users u on p.author_id = u.id');
+    const [users] = await db.query('SELECT * FROM users ');
    
     return users; 
 }
