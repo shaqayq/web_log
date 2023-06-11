@@ -4,9 +4,8 @@ const userModel = require('../models/userModel')
 
 
 exports.index =async(req, res) => {
-
     const users =await userModel.getAll();
-   const alluser= users.map(user=>({
+    const alluser= users.map(user=>({
     ...user, 
     created_at: moment(user.created_at).format('YYYY-MM-DD')
    }))
@@ -15,8 +14,7 @@ exports.index =async(req, res) => {
 
 exports.create =async(req , res) => {
 
-    const error = req.body.error;
-   
+    const error = req.body.error;  
     res.render('user/newuser', {layout: 'main'});
 }
 
@@ -58,17 +56,18 @@ exports.deleteUser = (req , res) => {
   res.redirect('/user')
 }
 
-// exports.finduser = async(req , res) => {
+exports.findUser = async(req , res) => {
 
-//   const {userId} = req.query; 
-//   const [user] = await userModel.findById(userId);
+  const {userId} = req.query; 
+  const [user] = await userModel.findById(userId);
 
-//   return res.render('user/edituser', {layout: 'main' , user , helpers:{
-//     isSelectedStatus: function (status, option) {
-//       return user[0].status === status ? option.fn(this) : option.inverse(this)
-//     }
-//   }});
-// }
+  return res.render('user/editUser', {layout: 'main' , user , helpers:{
+    isSelectedRole: function (role, option) {
+      return user[0].role === role ? option.fn(this) : option.inverse(this)
+    }
+  }});
+}
+
 
 
 // exports.updateuser = (req , res) => {

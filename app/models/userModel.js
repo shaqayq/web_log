@@ -17,10 +17,10 @@ exports.delete = async(id) => {
     return result;
 }
 
-// exports.findById = async(id)=>{
-//     const result = await db.query("SELECT * FROM users WHERE id=?" , id)
-//     return result
-// }
+exports.findById = async(id)=>{
+    const result = await db.query("SELECT * FROM users WHERE id=?" , id)
+    return result
+}
 
 // exports.update = async(data , id)=>{
 //     const result = db.query('UPDATE users SET ? WHERE id=?' , [data , id])
