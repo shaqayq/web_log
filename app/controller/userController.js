@@ -13,12 +13,12 @@ exports.index =async(req, res) => {
     res.render('user/', {layout: 'main' , alluser});
 }
 
-// exports.create =async(req , res) => {
+exports.create =async(req , res) => {
 
-//     const error = req.body.error;
+    const error = req.body.error;
    
-//     res.render('user/newuser', {layout: 'main'});
-// }
+    res.render('user/newuser', {layout: 'main'});
+}
 
 // exports.store = async (req, res) => {
 
@@ -51,12 +51,12 @@ exports.index =async(req, res) => {
 
 // };
 
-// exports.deleteuser = (req , res) => {
-//   const {userId} = req.params;
+exports.deleteUser = (req , res) => {
+  const {userId} = req.params;
  
-//   userModel.delete(userId);
-//   res.redirect('/user')
-// }
+  userModel.delete(userId);
+  res.redirect('/user')
+}
 
 // exports.finduser = async(req , res) => {
 

@@ -12,10 +12,10 @@ exports.getAll=async(req,res)=>{
 //     return result;
 // }
 
-// exports.delete = async(id) => {
-//     const result = await db.query('DELETE FROM users WHERE id=?' , id )
-//     return result;
-// }
+exports.delete = async(id) => {
+    const result = await db.query('DELETE FROM users WHERE id=?' , id )
+    return result;
+}
 
 // exports.findById = async(id)=>{
 //     const result = await db.query("SELECT * FROM users WHERE id=?" , id)
