@@ -1,6 +1,6 @@
 const { validationResult  , body} = require('express-validator');
 const moment = require('moment')
-const postModel = require('../models/posts')
+const postModel = require('../models/postModel')
 
 
 exports.index =async(req, res) => {
