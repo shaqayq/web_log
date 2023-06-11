@@ -19,20 +19,20 @@ exports.create =async(req , res) => {
 }
 
 exports.store = async (req, res) => {
-  // const validateData = [   
-  //   body('full_name').notEmpty().withMessage('*** Full_Name is required ***'),
-  //   body('email').notEmpty().withMessage('*** Email is required ***'),
-  //   body('password').notEmpty().withMessage('*** Password is required ***'), 
-  // ];
+  const validateData = [   
+    body('full_name').notEmpty().withMessage('*** Full_Name is required ***'),
+    body('email').notEmpty().withMessage('*** Email is required ***'),
+    body('password').notEmpty().withMessage('*** Password is required ***'), 
+  ];
 
-  // for (const validator of validateData) {
-  //   await validator.run(req);
-  // }
+  for (const validator of validateData) {
+    await validator.run(req);
+  }
 
-  // const errors = validationResult(req);
-  // if (!errors.isEmpty()) {
-  //   return res.render('newUser', { errors: errors.array() });
-  // } 
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.render('newUser', { errors: errors.array() });
+  } 
 
   const { full_name, email, password, role } = req.body;
   const data = {
@@ -44,6 +44,7 @@ exports.store = async (req, res) => {
   };
 
    userModel.storeUser(data);
+  //req.flash('success' , "User Added Successfully!!");
    return res.redirect("/user")
 
 };
