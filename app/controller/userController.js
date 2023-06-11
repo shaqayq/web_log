@@ -70,16 +70,16 @@ exports.findUser = async(req , res) => {
 
 
 
-// exports.updateuser = (req , res) => {
-//   const {userId} = req.params;
-//   const { title, slug, content, status } = req.body;
-//   const data = {
-//     author_id: 1,
-//     title: title,
-//     slug: slug,
-//     content: content,
-//     status: status,
-//   };
-//   userModel.update(data , userId)
-//   res.redirect('/user')
-// }
+exports.updateUser = (req , res) => {
+  const {userId} = req.params;
+  const { full_name, email, password, role } = req.body;
+  const data = {
+   
+    full_name: full_name,
+    email: email,
+    password: password,
+    role: role
+  };
+  userModel.update(data , userId)
+  res.redirect('/user')
+}

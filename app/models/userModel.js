@@ -22,7 +22,7 @@ exports.findById = async(id)=>{
     return result
 }
 
-// exports.update = async(data , id)=>{
-//     const result = db.query('UPDATE users SET ? WHERE id=?' , [data , id])
-//     return result;
-// }
+exports.update = async(data , id)=>{
+    const result = db.query('UPDATE users SET ? WHERE id=?' , [data , id])
+    return result;
+}
