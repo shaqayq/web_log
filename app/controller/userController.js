@@ -18,36 +18,37 @@ exports.create =async(req , res) => {
     res.render('user/newuser', {layout: 'main'});
 }
 
-// exports.store = async (req, res) => {
+exports.store = async (req, res) => {
+  // const validateData = [   
+  //   body('full_name').notEmpty().withMessage('*** Full_Name is required ***'),
+  //   body('email').notEmpty().withMessage('*** Email is required ***'),
+  //   body('password').notEmpty().withMessage('*** Password is required ***'), 
+  // ];
 
-//   const validateData = [   
-//     body('title').notEmpty().withMessage('*** Title is required ***'),
-//     body('slug').notEmpty().withMessage('*** Slug is required ***'),
-//     body('content').notEmpty().withMessage('*** Content is required ***'), 
-//   ];
+  // for (const validator of validateData) {
+  //   await validator.run(req);
+  // }
 
-//   for (const validator of validateData) {
-//     await validator.run(req);
-//   }
+  // const errors = validationResult(req);
+  // if (!errors.isEmpty()) {
+  //   return res.render('newUser', { errors: errors.array() });
+  // } 
 
-//   const errors = validationResult(req);
-//   if (!errors.isEmpty()) {
-//     return res.render('newuser', { errors: errors.array() });
-//   } 
+  const { full_name, email, password, role } = req.body;
+  const data = {
+  
+    full_name: full_name,
+    email: email,
+    password: password,
+    role: role,
+  };
 
-//   const { title, slug, content, status } = req.body;
-//   const data = {
-//     author_id: 1,
-//     title: title,
-//     slug: slug,
-//     content: content,
-//     status: status,
-//   };
+   userModel.storeUser(data);
+   return res.redirect("/user")
 
-//    userModel.storeuser(data);
-//    return res.redirect("/user")
+};
 
-// };
+
 
 exports.deleteUser = (req , res) => {
   const {userId} = req.params;

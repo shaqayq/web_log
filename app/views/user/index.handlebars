@@ -53,7 +53,10 @@
                       {{else}}
                         {{#isEqual role 1}}
                          <p class="text-xs text-secondary mb-0">Admin</p>
-                        
+                        {{else}}
+                        {{#isEqual role 2}}
+                         <p class="text-xs text-secondary mb-0">Author</p>
+                         {{/isEqual}}
                         {{/isEqual}}
                       {{/isEqual}}
                     </td>
