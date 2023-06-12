@@ -36,30 +36,28 @@
                 <form role="form text-left" action="/post/store" method="post">
                  <div class="row">
                     <div class="mb-3 col-lg-6">
-                        <label>Post Title:</label>
-                    <input type="text" class="form-control" placeholder="Title" aria-label="Title" name="title">
+                        <label>General:</label>
+                    <input type="text" class="form-control" placeholder="WebSit Title.." aria-label="Title" name="title">
                 
                   </div>
                   <div class="mb-3 col-lg-6">
-                     <label>Post Slug:</label>
-                    <input type="text" class="form-control" placeholder="Slug" aria-label="Slug" name="slug">
+                     <label>Content:</label>
+                    <input type="number" class="form-control" placeholder="Page Content Number ..." aria-label="Slug" name="content">
                   </div>
                  </div>
                   
                   <div class="mb-3">
-                     <label>Post Content:</label>
-                   <textarea name="content" class="form-control" aria-label="Content" aria-describedby="email-addon" heigth="200px"></textarea>
+                     <label>Detail:</label>
+                   <textarea name="details" class="form-control" aria-label="Content" aria-describedby="email-addon" heigth="200px"></textarea>
                   </div>
                   <h6>Status</h6>
                   <div class="form-check ">
-                    <input class="form-check-input" type="radio" name="status" value="0" id="flexCheckDefault" checked><p>Draft</p>
+                    <input class="form-check-input" type="checkbox" name="register" value="0" id="flexCheckDefault" ><p>Every one can register in site</p>
                   </div>
                   <div class="form-check  ">
-                    <input class="form-check-input" type="radio" name="status" value="1" id="flexCheckDefault"><p>Publication</p>
+                    <input class="form-check-input" type="checkbox" name="addPost" value="1" id="flexCheckDefault"><p>Every one can add comment</p>
                   </div>
-                   <div class="form-check  ">
-                    <input class="form-check-input" type="radio" name="status" value="2" id="flexCheckDefault"><p>Under Review</p>
-                  </div>
+                
                   <div class="text-center">
                     <button type="submit" class="btn my-4 mb-2" style="">ADD POST</button>
                   </div>
