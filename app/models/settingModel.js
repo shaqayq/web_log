@@ -6,23 +6,13 @@ exports.getAll=async(req,res)=>{
     return setting; 
 }
 
-// exports.storeSetting = async(data) => {
 
-//     const [result]= await db.query('INSERT INTO setting SET?' , data);
-//     return result;
-// }
 
-// exports.delete = async(id) => {
-//     const result = await db.query('DELETE FROM setting WHERE id=?' , id )
-//     return result;
-// }
+exports.update = async(updateFeilds)=>{
 
-// exports.findById = async(id)=>{
-//     const result = await db.query("SELECT * FROM setting WHERE id=?" , id)
-//     return result
-// }
-
-// exports.update = async(data , id)=>{
-//     const result = db.query('UPDATE setting SET ? WHERE id=?' , [data , id])
-//     return result;
-// }
+    const updateQuery = Object.keys(updateFeilds).map(setting_name => {
+        return `UPDATE setting SET setting_value ='${updateFeilds[setting_name]}' WHERE setting_name = '${setting_name}'`;
+    })
+    const result = db.query(`${updateQuery.join(';')}`);
+    return result;
+}

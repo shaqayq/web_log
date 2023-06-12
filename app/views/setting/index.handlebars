@@ -33,16 +33,16 @@
               </div>
             {{/if}} 
               <div class="card-body">
-                <form role="form text-left" action="/post/store" method="post">
+                <form role="form text-left" action="/setting/store" method="post">
                  <div class="row">
                     <div class="mb-3 col-lg-6">
                         <label>General:</label>
-                    <input type="text" class="form-control" placeholder="WebSit Title.." aria-label="Title" name="title">
+                    <input type="text" class="form-control" placeholder="WebSit Title.." aria-label="Title" name="websit_title">
                 
                   </div>
                   <div class="mb-3 col-lg-6">
                      <label>Content:</label>
-                    <input type="number" class="form-control" placeholder="Page Content Number ..." aria-label="Slug" name="content">
+                    <input type="number" class="form-control" placeholder="Page Content Number ..." aria-label="Slug" name="content_per_page">
                   </div>
                  </div>
                   
@@ -52,10 +52,10 @@
                   </div>
                   <h6>Status</h6>
                   <div class="form-check ">
-                    <input class="form-check-input" type="checkbox" name="register" value="0" id="flexCheckDefault" ><p>Every one can register in site</p>
+                    <input class="form-check-input" type="checkbox" name="user_can_register" value="1" id="flexCheckDefault" ><p>Every one can register in site</p>
                   </div>
                   <div class="form-check  ">
-                    <input class="form-check-input" type="checkbox" name="addPost" value="1" id="flexCheckDefault"><p>Every one can add comment</p>
+                    <input class="form-check-input" type="checkbox" name="user_can_submit_comment" value="1" id="flexCheckDefault"><p>Every one can add comment</p>
                   </div>
                 
                   <div class="text-center">
