@@ -1,21 +1,23 @@
 const { validationResult  , body} = require('express-validator');
 const moment = require('moment')
-const postModel = require('../models/postModel')
+const postModel = require('../models/postModel');
+const { log } = require('handlebars');
 
 
 exports.index =async(req, res) => {
+   
+    const msg = req.flash();
 
     const posts =await postModel.getAll();
-   const allPost= posts.map(post=>({
+    const allPost= posts.map(post=>({
     ...post, 
     created_at: moment(post.created_at).format('YYYY-MM-DD')
    }))
-    res.render('post/', {layout: 'main' , allPost});
+    res.render('post/', {layout: 'main' , allPost , msg});
 }
 
 exports.create =async(req , res) => {
 
-    const error = req.body.error;
    
     res.render('post/newPost', {layout: 'main'});
 }
@@ -46,16 +48,28 @@ exports.store = async (req, res) => {
     status: status,
   };
 
-   postModel.storePost(data);
-   return res.redirect("/post")
+   
+ 
+   const insert= postModel.storePost(data);
+   if(insert){
+    req.flash('success', 'Post add successfully!')
+    return res.redirect("/post")
+   }
+ 
+ 
+   
 
 };
 
 exports.deletePost = (req , res) => {
   const {postId} = req.params;
  
-  postModel.delete(postId);
+ const deletePost = postModel.delete(postId);
+ if(deletePost){
+  req.flash('success' , "Post Deleted Successfully!!");
   res.redirect('/post')
+ }
+  
 }
 
 exports.findPost = async(req , res) => {

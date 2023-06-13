@@ -14,10 +14,29 @@
     .error-messages li {
        list-style-type: none; 
     }
+     .alert{
+    padding: 1px;
+    width: 83%;
+    border: 1px solid green;
+    border-radius: 13px;
+    background-color: #00800036;
+  }
+  .alert h6 {
+    color: #105e1b;
+    text-align: center;
+  }
  </style>
  <div class="container-fluid py-4">
-     
+        <div class="col-3 d-flex align-items-center">
+                          {{#if msg.success}}
+                          <div class="alert">
+                             <h6>{{msg.success}}</h6>
+                          </div>
+                        
+                         {{/if}}
+              </div>
       <div class="row">
+       
         <div class="col-12">
           <div class="card z-index-0">
               <div class="card-header text-center pt-4">
@@ -32,6 +51,7 @@
                 </ul>
               </div>
             {{/if}} 
+           
               <div class="card-body">
                 <form role="form text-left" action="/setting/store" method="post">
                  <div class="row">

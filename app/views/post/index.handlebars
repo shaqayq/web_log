@@ -3,14 +3,32 @@
       background-color: #cb0c9f !important;
     color: #fff;
   }
+  .alert{
+    padding: 1px;
+    width: 83%;
+    border: 1px solid green;
+    border-radius: 13px;
+    background-color: #00800036;
+  }
+  .alert h6 {
+    color: #105e1b;
+    text-align: center;
+  }
  </style>
  <div class="container-fluid py-4">
       <div class="card-header pb-0 p-3">
                   <div class="row">
-                    <div class="col-6 d-flex align-items-center">
-                      
+                 
+                    <div class="col-3 d-flex align-items-center">
+                          {{#if msg.success}}
+                          <div class="alert">
+                             <h6>{{msg.success}}</h6>
+                          </div>
+                        
+                         {{/if}}
                     </div>
-                    <div class="col-6 text-end">
+                     
+                    <div class="col-9 text-end">
                       <a class="btn mb-0 add" href="/post/create"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add New Post </a>
                     </div>
                   </div>

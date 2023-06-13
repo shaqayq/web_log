@@ -5,6 +5,7 @@ const definedSetting= require('../config/setting')
 
 exports.index =async(req, res) => {
 
+    const msg = req.flash()
     const settings =await settingModel.getAll();
     const allSetting ={}
 
@@ -12,7 +13,7 @@ exports.index =async(req, res) => {
         allSetting[item.setting_name] = item.setting_value
     })
   
-    res.render('setting/', {layout: 'main' , config: allSetting , helpers: {
+    res.render('setting/', {layout: 'main' , config: allSetting ,msg , helpers: {
         ischecked: function(value, options) {
             return parseInt(value) === 1 ? options.fn(this) : options.inverse(this);
         }
@@ -36,6 +37,8 @@ exports.store = async (req, res) => {
     const validatingSetting ={...definedSetting , ... premittdSettings}
 
     const result = await settingModel.update(validatingSetting);
+
+    req.flash('success', 'Setting updated successfully!!')
     return res.redirect("/setting")
    
 };
