@@ -1,0 +1,90 @@
+ <style>
+  .add {
+      background-color: #cb0c9f !important;
+    color: #fff;
+  }
+ </style>
+ <div class="container-fluid py-4">
+      <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div class="col-6 d-flex align-items-center">
+                     {{!-- {{#each flash.success}}
+                        <h6>{{this}}</h6>
+                    {{/each}} --}}
+
+                    </div>
+                    <div class="col-6 text-end">
+                      <a class="btn mb-0 add" href="/user/create"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add New user </a>
+                    </div>
+                  </div>
+                </div>
+                <br>
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-header pb-0">
+              <h6>Users Table</h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                    
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
+                     
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
+                      <th class="text-secondary opacity-7"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each alluser}}
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1">
+                       
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">{{full_name}}</h6>
+                            <p class="text-xs text-secondary mb-0">{{email}}</p>
+                          </div>
+                        </div>
+                      </td>
+                    <td class="align-middle text-center text-sm">
+                      {{#isEqual role 0}}
+                         <p class="text-xs text-secondary mb-0">user</p>
+                      {{else}}
+                        {{#isEqual role 1}}
+                         <p class="text-xs text-secondary mb-0">Admin</p>
+                        {{else}}
+                        {{#isEqual role 2}}
+                         <p class="text-xs text-secondary mb-0">Author</p>
+                         {{/isEqual}}
+                        {{/isEqual}}
+                      {{/isEqual}}
+                    </td>
+                      <td class="align-middle text-center text-sm">
+                         <p class="text-xs font-weight-bold mb-0">{{created_at}}</p>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{views}}</span>
+                      </td>
+                      <td class="align-middle">
+                        
+                        <a href="/user/edituser?userId={{id}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          Edit
+                        </a> | 
+                         <a href="/user/delete/{{id}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          Delete
+                        </a>
+                      </td>
+                    </tr>
+                    {{/each}} 
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
