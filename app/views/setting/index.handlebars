@@ -37,27 +37,34 @@
                  <div class="row">
                     <div class="mb-3 col-lg-6">
                         <label>General:</label>
-                    <input type="text" class="form-control" placeholder="WebSit Title.." aria-label="Title" name="websit_title">
+                    <input type="text" class="form-control" placeholder="WebSit Title.." aria-label="Title" name="websit_title" value="{{config.websit_title}}">
                 
                   </div>
                   <div class="mb-3 col-lg-6">
                      <label>Content:</label>
-                    <input type="number" class="form-control" placeholder="Page Content Number ..." aria-label="Slug" name="content_per_page">
+                    <input type="number" class="form-control" placeholder="Page Content Number ..." aria-label="Slug" name="content_per_page" value="{{config.content_per_page}}">
                   </div>
                  </div>
                   
                   <div class="mb-3">
                      <label>Detail:</label>
-                   <textarea name="details" class="form-control" aria-label="Content" aria-describedby="email-addon" heigth="200px"></textarea>
+                   <textarea name="details" class="form-control" aria-label="Content" aria-describedby="email-addon" heigth="200px">{{config.details}}</textarea>
                   </div>
                   <h6>Status</h6>
+
                   <div class="form-check ">
-                    <input class="form-check-input" type="checkbox" name="user_can_register" value="1" id="flexCheckDefault" ><p>Every one can register in site</p>
+                    <input class="form-check-input" type="checkbox" name="user_can_register"  id="flexCheckDefault" {{#ischecked config.user_can_register}}checked{{/ischecked}}>
+                    <label>Every one can register in site</label>
                   </div>
+
                   <div class="form-check  ">
-                    <input class="form-check-input" type="checkbox" name="user_can_submit_comment" value="1" id="flexCheckDefault"><p>Every one can add comment</p>
+                    <input class="form-check-input" type="checkbox" name="user_can_submit_comment" id="flexCheckDefault" {{#ischecked config.user_can_submit_comment}}checked{{/ischecked}}>
+                    <label>Every one can add comment</label>
                   </div>
                 
+
+                  
+
                   <div class="text-center">
                     <button type="submit" class="btn my-4 mb-2" style="">ADD POST</button>
                   </div>
