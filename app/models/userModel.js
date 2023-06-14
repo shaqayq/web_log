@@ -33,3 +33,8 @@ exports.update = async(data , id)=>{
     return result;
 }
 
+exports.findByEmail =async(email) =>{
+    const [isUser] =await db.query('SELECT * FROM users WHERE email = ?' , email);
+    return isUser.length === 0 ? isUser[0] : null;
+}
+
