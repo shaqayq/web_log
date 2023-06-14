@@ -4,13 +4,15 @@ const commentRout = require('./commentRoute')
 const userRoute = require('./userRoute')
 const settingRoute = require('./settingRoute')
 const authRoute= require('./authRoute')
+
+const auth = require('../middleware/auth')
 module.exports = app => {
 
-    app.use('/admin', adminRoute),
-    app.use('/post', postRoute),
-    app.use('/comment', commentRout),
-    app.use('/user',userRoute),
-    app.use('/setting', settingRoute),
+    app.use('/admin',[auth], adminRoute),
+    app.use('/post',[auth], postRoute),
+    app.use('/comment',[auth], commentRout),
+    app.use('/user',[auth],userRoute),
+    app.use('/setting',[auth], settingRoute),
     app.use('/auth', authRoute)
 
 
