@@ -29,7 +29,10 @@ exports.findById = async(id)=>{
 }
 
 exports.update = async(data , id)=>{
-    const result =await db.query('UPDATE users SET ? WHERE id=?' , [data , id])
+
+    const hash = bcrypt.hashSync(data.password , 10 );
+    const newData = {...data , password: hash}
+    const result =await db.query('UPDATE users SET ? WHERE id=?' , [newData , id])
     return result;
 }
 
