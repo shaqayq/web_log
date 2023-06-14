@@ -1,5 +1,6 @@
 const express= require('express')
 const session = require('express-session')
+const cookiParser = require('cookie-parser')
 const flash = require('connect-flash')
 const exhbs= require('express-handlebars')
 const Handlebars = require('handlebars')
@@ -11,10 +12,19 @@ Handlebars.registerHelper('isEqual', function (value1, value2, options) {
 
 const path = require('path')
 const bodyParser = require('body-parser')
+
 module.exports = app =>{
    
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: false}));
+
+    app.use(cookiParser());
+    app.use(session({
+      secret: "92jn34kn45i5nkn5",
+      resave: true,
+      saveUninitialized: true,
+      cookie: {maxAge: 6000}}));
+    app.use(flash());
 
     app.engine('handlebars' , exhbs.engine({
         helpers: {
@@ -25,11 +35,5 @@ module.exports = app =>{
     app.set('views', path.join(__dirname,'../views'))
     app.use(express.static(path.join(__dirname, '../../public')))
 
-    app.use(session({
-      secret: process.env.APP_SECRET,
-      resave: false,
-      saveUninitialized: false
-    }));
-    
-    app.use(flash());
+   
 }

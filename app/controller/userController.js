@@ -4,12 +4,13 @@ const userModel = require('../models/userModel')
 
 
 exports.index =async(req, res) => {
+  const msg = req.flash();
     const users =await userModel.getAll();
     const alluser= users.map(user=>({
     ...user, 
     created_at: moment(user.created_at).format('YYYY-MM-DD')
    }))
-    res.render('user/', {layout: 'main' , alluser});
+    res.render('user/', {layout: 'main' , alluser , msg});
 }
 
 exports.create =async(req , res) => {
@@ -43,18 +44,20 @@ exports.store = async (req, res) => {
     role: role,
   };
 
-   userModel.storeUser(data);
-  //req.flash('success' , "User Added Successfully!!");
+   const insert =userModel.storeUser(data);
+   if(insert){
+    req.flash('success' , "User Added Successfully!!");
    return res.redirect("/user")
-
+   }
+  
 };
-
 
 
 exports.deleteUser = (req , res) => {
   const {userId} = req.params;
  
   userModel.delete(userId);
+  req.flash('success' , "User Deleted Successfully!!");
   res.redirect('/user')
 }
 
