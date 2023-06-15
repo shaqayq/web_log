@@ -7,7 +7,7 @@ const authRoute= require('./authRoute')
 
 const auth = require('../middleware/auth')
 module.exports = app => {
-
+    
     app.use('/admin',[auth], adminRoute),
     app.use('/post',[auth], postRoute),
     app.use('/comment',[auth], commentRout),
