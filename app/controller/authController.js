@@ -13,7 +13,7 @@ exports.doLogin = async(req , res) =>{
     const user = await authService.login(email , password);
     
     if(!user){
-        req.flash('error','Email or Password is Invalid!!')
+      req.flash('error','Email or Password is Invalid!!')
       return   res.redirect('/auth/login')
     }
 
@@ -26,4 +26,19 @@ exports.showSignup = (req , res) => {
   const msg = req.flash()
   res.render('auth/signup' , {layout: false , msg})
 } 
+
+exports.doregister = async(req , res) =>{
+  const {user_name, email , password} = req.body
+  const newUser = authService.register(user_name , email ,password);
+
+  if(!newUser) {
+    res.flash('error' ,'User with this email is exist!!')
+    return res.redirect('/auth/register')
+  }
+
+  return res.redirect('/auth/login')
+
+  
+}
+
 
