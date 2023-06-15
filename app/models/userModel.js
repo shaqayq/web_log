@@ -10,7 +10,6 @@ exports.getAll=async(req,res)=>{
 
 exports.storeUser = async(data) => {
   
-   
     const hash = bcrypt.hashSync(data.password , 10 );
     const newData = {...data , password: hash}
     const [result]= await db.query('INSERT INTO users SET?' , newData);
@@ -29,7 +28,15 @@ exports.findById = async(id)=>{
 }
 
 exports.update = async(data , id)=>{
-    const result = db.query('UPDATE users SET ? WHERE id=?' , [data , id])
+
+    const hash = bcrypt.hashSync(data.password , 10 );
+    const newData = {...data , password: hash}
+    const result =await db.query('UPDATE users SET ? WHERE id=?' , [newData , id])
     return result;
+}
+
+exports.findByEmail =async(email) =>{
+    const [isUser] =await db.query('SELECT * FROM users WHERE email = ? LIMIT 1' , [email]);
+    return isUser.length === 1 ? isUser[0] : false;
 }
 

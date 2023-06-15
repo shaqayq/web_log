@@ -7,5 +7,8 @@ exports.index = async (req,res) => {
         totalComment: await statistics.totalComment(),
         totalView: await statistics.totalViews()
     }
-    res.render('dashboard', { layout: 'main' , ...data});
+
+    const session= req.session.user
+   
+    res.render('dashboard', { layout: 'main' , ...data , session});
 }
