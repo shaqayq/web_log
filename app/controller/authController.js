@@ -1,5 +1,6 @@
 const authService = require('../service/authService')
 const userRole = require('../models/userRole')
+
 exports.showLogin = (req , res) => {   
     const msg = req.flash()
     res.render('auth/login' , {layout: false , msg})
@@ -20,3 +21,9 @@ exports.doLogin = async(req , res) =>{
   const redirectPath = user.role === userRole.ADMIN ? '/admin/dashboard' : '/'
   return res.redirect(redirectPath)
 }
+
+exports.showSignup = (req , res) => {   
+  const msg = req.flash()
+  res.render('auth/signup' , {layout: false , msg})
+} 
+
