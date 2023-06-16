@@ -23,7 +23,9 @@ module.exports = app =>{
       secret: "92jn34kn45i5nkn5",
       resave: true,
       saveUninitialized: true,
-      cookie: {maxAge: 6000}}));
+      cookie: {
+       maxAge: 24 * 60 * 60 * 1000,
+      }}));
     app.use(flash());
 
     app.engine('handlebars' , exhbs.engine({
