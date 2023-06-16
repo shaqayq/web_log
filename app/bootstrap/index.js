@@ -29,13 +29,17 @@ module.exports = app =>{
 
     app.use(cookiParser());
     app.use(session({
+     
       store: sessionStore,
       secret: "92jn34kn45i5nkn5",
       resave: true,
       saveUninitialized: true,
+      unset:'destroy',
       cookie: {
        maxAge: 24 * 60 * 60 * 1000,
-      }}));
+      }
+ 
+    }));
     app.use(flash());
 
     app.engine('handlebars' , exhbs.engine({
