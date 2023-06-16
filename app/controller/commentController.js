@@ -9,7 +9,7 @@ exports.index =async(req, res) => {
         ...comment , 
         created_at: moment(comment.created_at).format('YYYY-MM-DD')
     }))
-    console.log(allComment);
+    
         res.render('comment/', {layout: 'main' , allComment});
 }
 
