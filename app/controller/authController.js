@@ -41,4 +41,10 @@ exports.doregister = async(req , res) =>{
   
 }
 
+exports.logout = async(req , res) => {
+  req.session.destroy(error => {
+    res.redirect('auth/login')
+  })
+}
+
 

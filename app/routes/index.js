@@ -4,7 +4,7 @@ const commentRout = require('./commentRoute')
 const userRoute = require('./userRoute')
 const settingRoute = require('./settingRoute')
 const authRoute= require('./authRoute')
-
+const authController = require('../controller/authController')
 const auth = require('../middleware/auth')
 module.exports = app => {
     
@@ -14,6 +14,7 @@ module.exports = app => {
     app.use('/user',[auth],userRoute),
     app.use('/setting',[auth], settingRoute),
     app.use('/auth', authRoute)
+    app.get('/logout',authController.logout )
 
 
 
