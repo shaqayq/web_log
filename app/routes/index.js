@@ -6,8 +6,10 @@ const settingRoute = require('./settingRoute')
 const authRoute= require('./authRoute')
 const authController = require('../controller/authController')
 const auth = require('../middleware/auth')
+const frontRoute = require('./frontRoute/homeRoute')
 module.exports = app => {
     
+    app.use('/' ,frontRoute),
     app.use('/admin',[auth], adminRoute),
     app.use('/post',[auth], postRoute),
     app.use('/comment',[auth], commentRout),
