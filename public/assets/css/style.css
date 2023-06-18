@@ -152,7 +152,7 @@ sup {
 }
 
 a {
-  color: #ED1C24;
+  color: #cb0c9f;
   text-decoration: none;
   background-color: transparent;
 }
@@ -9264,7 +9264,7 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-  color: #ED1C24 !important;
+  color: #cb0c9f !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
@@ -9353,6 +9353,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 .text-decoration-none {
   text-decoration: none !important;
+  border-radius: 24px;
 }
 
 .text-break {
@@ -9491,7 +9492,7 @@ h6,
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link.active {
   color: #ffffff;
-  background: #ED1C24;
+  background: #cb0c9f;
 }
 
 @media (max-width: 991.98px) {
@@ -9568,6 +9569,7 @@ h6,
   justify-content: flex-end;
   background: rgba(0, 0, 0, 0.3);
   z-index: 1;
+  border-radius: 0 0 16px 16px;
 }
 
 .page-header {
@@ -9576,6 +9578,11 @@ h6,
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+
+.post-card img {
+  border-radius: 10px 10px 1px 1px;
 }
 
 @media (max-width: 991.98px) {
