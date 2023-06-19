@@ -7,7 +7,7 @@ const word_limit = require('../../presenter/post_present')
 exports.showPost = async(req , res) => {
 
     const {post_id} = req.params;
-    console.log(post_id);
+
     const post = postModel.findById(post_id);
-    return res.render('front/post/singlePost' , {layout: false})
+    return res.render('front/post/singlePost' , {layout: 'front'})
 }
