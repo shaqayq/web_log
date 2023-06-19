@@ -4,27 +4,18 @@
                         <img class="img-fluid w-100" src="/assets/img/news-700x435-2.jpg" style="object-fit: cover;">
                         <div class="overlay position-relative bg-light">
                             <div class="mb-3">
-                                <a href="">Technology</a>
+                                {{#each post}}
+                                <a href="">{{full_name}}</a>
                                 <span class="px-1">/</span>
-                                <span>January 01, 2045</span>
+                                <span>{{created_at}}</span>
                             </div>
                             <div>
-                                <h3 class="mb-3">Est stet amet ipsum stet clita rebum duo</h3>
-                                <p>Sadipscing labore amet rebum est et justo gubergren. Et eirmod ipsum sit diam ut
-                                    magna lorem. Nonumy vero labore lorem sanctus rebum et lorem magna kasd, stet
-                                    amet magna accusam consetetur eirmod. Kasd accusam sit ipsum sadipscing et at at
-                                    sanctus et. Ipsum sit gubergren dolores et, consetetur justo invidunt at et
-                                    aliquyam ut et vero clita. Diam sea sea no sed dolores diam nonumy, gubergren
-                                    sit stet no diam kasd vero.</p>
-                                <p>Voluptua est takimata stet invidunt sed rebum nonumy stet, clita aliquyam dolores
-                                    vero stet consetetur elitr takimata rebum sanctus. Sit sed accusam stet sit
-                                    nonumy kasd diam dolores, sanctus lorem kasd duo dolor dolor vero sit et. Labore
-                                    ipsum duo sanctus amet eos et. Consetetur no sed et aliquyam ipsum justo et,
-                                    clita lorem sit vero amet amet est dolor elitr, stet et no diam sit. Dolor erat
-                                    justo dolore sit invidunt.</p>
+                                <h3 class="mb-3">{{title}}</h3>
+                                <p>{{content}}</p>
                              
                             </div>
                         </div>
+                        {{/each}}
                     </div>
                     <!-- News Detail End -->
 

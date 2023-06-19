@@ -27,8 +27,8 @@ exports.delete = async(id) => {
 }
 
 exports.findById = async(id)=>{
-    const result = await db.query("SELECT * FROM posts WHERE id=?" , id)
-    return result
+    const result = await db.query("SELECT p.* , u.full_name FROM posts p join users u on p.author_id = u.id WHERE p.id=?" , id)
+    return result[0]
 }
 
 exports.update = async(data , id)=>{

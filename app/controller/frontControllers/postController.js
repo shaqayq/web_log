@@ -1,13 +1,20 @@
 const postModel = require('../../models/postModel')
 const moment = require('moment')
-const word_limit = require('../../presenter/post_present')
+
 
 
 
 exports.showPost = async(req , res) => {
 
     const {post_id} = req.params;
-
-    const post = postModel.findById(post_id);
-    return res.render('front/post/singlePost' , {layout: 'front'})
+    const getPost =await postModel.findById(post_id);
+    if(!getPost){
+        return res.redirect('/404')
+    }
+    const post = getPost.map(p =>({
+        ...p ,
+        created_at: moment(p.created_at).format('YYYY-MM-DD')
+    }))
+    
+    return res.render('front/post/singlePost' , {layout: 'front', post})
 }
