@@ -31,12 +31,7 @@ exports.getSinglePostComment=async(id)=>{
     return comments; 
 }
 
-// exports.findById = async(id)=>{
-//     const result = await db.query("SELECT * FROM posts WHERE id=?" , id)
-//     return result
-// }
-
-// exports.update = async(data , id)=>{
-//     const result = db.query('UPDATE posts SET ? WHERE id=?' , [data , id])
-//     return result;
-// }
+exports.countComment =async(id)=>{
+    const [count] =await db.query('SELECT COUNT(id) as totalComment FROM comments WHERE post_id=?' , id)
+    return count[0].totalComment;
+}

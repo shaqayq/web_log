@@ -22,6 +22,8 @@ exports.showPost = async(req , res) => {
         created_at: moment(comment.created_at).format('YYYY-MM-DD')
     }))
     
-    return res.render('front/post/singlePost' , {layout: 'front', post: getPost , comments})
+    const totalComment =await commentModel.countComment(post_id);
+    
+    return res.render('front/post/singlePost' , {layout: 'front', post: getPost , comments , totalComment})
 }
 
