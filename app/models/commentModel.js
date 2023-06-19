@@ -5,11 +5,11 @@ exports.getAll=async()=>{
     return comments; 
 }
 
-// exports.storePost = async(data) => {
+exports.store = async(data) => {
 
-//     const [result]= await db.query('INSERT INTO posts SET?' , data);
-//     return result;
-// }
+    const [result]= await db.query('INSERT INTO comments SET?' , data);
+    return result;
+}
 
 exports.delete = async(id) => {
     const result = await db.query('DELETE FROM comments WHERE id=?' , id )
