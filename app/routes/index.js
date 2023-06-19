@@ -6,7 +6,7 @@ const settingRoute = require('./settingRoute')
 const authRoute= require('./authRoute')
 const authController = require('../controller/authController')
 const auth = require('../middleware/auth')
-const frontRoute = require('./frontRoute/homeRoute')
+const frontRoute = require('./frontRoute')
 
 module.exports = app => {
     

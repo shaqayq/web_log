@@ -26,5 +26,7 @@ exports.index = async(req , res) =>{
         created_at:  moment(post.created_at).format('YYYY-MM-DD'),
     }))
  
-    res.render('front/home' , {layout: false , posts , pagination}) 
+    res.render('front/' , {layout: 'front' , posts , pagination}) 
 }
+
+

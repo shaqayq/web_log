@@ -1,4 +1,4 @@
-{{> header}}
+
 <style>
     #pagination{
        display: flex;
@@ -11,26 +11,7 @@
         color: #fff;
     }
 </style>
-
-    <!-- Breadcrumb Start -->
-    <div class="container-fluid">
-        <div class="container">
-            <nav class="breadcrumb bg-transparent m-0 p-0">
-                <a class="breadcrumb-item" href="#">Home</a>
-                <a class="breadcrumb-item" href="#">Posts</a>
-             
-            </nav>
-        </div>
-    </div>
-    <!-- Breadcrumb End -->
-
-
-    <!-- News With Sidebar Start -->
-    <div class="container-fluid py-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="row">
+  <div class="row">
                         <div class="col-12">
                             <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
                                 <h3 class="m-0">Posts</h3>
@@ -47,17 +28,14 @@
                                         <span class="px-1">/</span>
                                         <span>{{created_at}}</span>
                                     </div>
-                                    <a class="h4" href="">{{title}}</a>
+                                    <a class="h4" href="/slug/{{id}}">{{title}}</a>
                                     <p class="m-0">{{content}}</p>
                                 </div>
                             </div>
                         </div>
                         {{/each}}
                     </div>
-                    
-                  
-                    
-                   
+                      
                     <div class="row">
                         <div class="col-12">
                             <nav aria-label="Page navigation">
@@ -78,16 +56,3 @@
                             </nav>
                         </div>
                     </div>
-                </div>
-
-            {{> sidebars}}
-            </div>
-        </div>
-    </div>
-    </div>
-    <!-- News With Sidebar End -->
-
-
-{{> footer}}
-
-
