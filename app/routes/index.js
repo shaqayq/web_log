@@ -6,14 +6,17 @@ const settingRoute = require('./settingRoute')
 const authRoute= require('./authRoute')
 const authController = require('../controller/authController')
 const auth = require('../middleware/auth')
+const frontRoute = require('./frontRoute')
+
 module.exports = app => {
     
+    app.use('/' ,frontRoute), 
     app.use('/admin',[auth], adminRoute),
     app.use('/post',[auth], postRoute),
     app.use('/comment',[auth], commentRout),
     app.use('/user',[auth],userRoute),
     app.use('/setting',[auth], settingRoute),
-    app.use('/auth', authRoute)
+    app.use('/auth', authRoute), 
     app.get('/logout',authController.logout )
 
 

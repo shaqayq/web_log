@@ -1,0 +1,58 @@
+
+<style>
+    #pagination{
+       display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: baseline;
+    }
+    #pagination button {
+        background-color: #cb0c9fa1;
+        color: #fff;
+    }
+</style>
+  <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
+                                <h3 class="m-0">Posts</h3>
+                                <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
+                            </div>
+                        </div>
+                        {{#each posts}}
+                        <div class="col-lg-6">
+                            <div class="position-relative mb-3 post-card">
+                                <img class="img-fluid w-100" src="assets/img/news-500x280-1.jpg" style="object-fit: cover;">
+                                <div class="overlay position-relative bg-light">
+                                    <div class="mb-2" style="font-size: 14px;">
+                                        <a href="">{{full_name}}</a>
+                                        <span class="px-1">/</span>
+                                        <span>{{created_at}}</span>
+                                    </div>
+                                    <a class="h4" href="/slug/{{id}}">{{title}}</a>
+                                    <p class="m-0">{{content}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                      
+                    <div class="row">
+                        <div class="col-12">
+                            <nav aria-label="Page navigation">
+                                <div id="pagination">
+                                    <a href="?page={{pagination.prevPage}}">
+                                    <button class="btn" {{#unless  pagination.hasPrev}}disabled{{/unless }}>Prev</button>
+                                    </a>
+                                    <p>
+                                        {{pagination.page}}
+                                        From
+                                        {{pagination.total_page}}
+                                    </p>
+                                     <a href="?page={{pagination.nextPage}}">
+                                    <button class="btn" {{#unless  pagination.hasNext}}disabled{{/unless }}>Next</button>
+                                    </a>
+                                </div>
+
+                            </nav>
+                        </div>
+                    </div>
