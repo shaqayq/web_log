@@ -7,7 +7,7 @@ const commentRoute = require('./commentRoute')
 
 router.use('/' , homeRoute)
 router.use('/slug' , postRoute)
-router.use('/new_comment' , postRoute)
+router.use('/new_comment' , commentRoute)
 
 
 module.exports = router

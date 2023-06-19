@@ -1,7 +1,7 @@
 const { validationResult  , body} = require('express-validator');
 const moment = require('moment')
 const postModel = require('../models/postModel');
-const { log } = require('handlebars');
+
 
 
 exports.index =async(req, res) => {

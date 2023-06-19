@@ -26,6 +26,11 @@ exports.approve = async(id)=>{
     return result;
 }
 
+exports.getSinglePostComment=async(id)=>{
+    const [comments] = await db.query('SELECT * FROM comments WHERE post_id=?' , id);
+    return comments; 
+}
+
 // exports.findById = async(id)=>{
 //     const result = await db.query("SELECT * FROM posts WHERE id=?" , id)
 //     return result

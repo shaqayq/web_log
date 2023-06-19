@@ -5,7 +5,7 @@ const moment = require('moment')
 
 exports.storeCommnet =async(req , res) => {
     const post_id = req.params.post_id
-    
+   
     const {user_name , user_email , user_comment , user_url} = req.body
 
     const data ={

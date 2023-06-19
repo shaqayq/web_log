@@ -13,41 +13,6 @@ exports.index =async(req, res) => {
         res.render('comment/', {layout: 'main' , allComment});
 }
 
-// exports.create =async(req , res) => {
-//     const error = req.body.error;
-//     res.render('post/newPost', {layout: 'main'});
-// }
-
-// exports.store = async (req, res) => {
-
-//   const validateData = [   
-//     body('title').notEmpty().withMessage('*** Title is required ***'),
-//     body('slug').notEmpty().withMessage('*** Slug is required ***'),
-//     body('content').notEmpty().withMessage('*** Content is required ***'), 
-//   ];
-
-//   for (const validator of validateData) {
-//     await validator.run(req);
-//   }
-
-//   const errors = validationResult(req);
-//   if (!errors.isEmpty()) {
-//     return res.render('newPost', { errors: errors.array() });
-//   } 
-
-//   const { title, slug, content, status } = req.body;
-//   const data = {
-//     author_id: 1,
-//     title: title,
-//     slug: slug,
-//     content: content,
-//     status: status,
-//   };
-
-//    postModel.storePost(data);
-//    return res.redirect("/post")
-
-// };
 
 exports.deleteComment = (req , res) => {
   const {id} = req.params;
