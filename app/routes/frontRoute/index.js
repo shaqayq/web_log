@@ -6,6 +6,10 @@ const postRoute = require('./postRoute')
 const commentRoute = require('./commentRoute')
 
 router.use('/' , homeRoute)
+router.get('/about', function (req , res){
+    res.render('front/about' , {layout: 'front' , showSidebar: true})
+})
+
 router.use('/slug' , postRoute)
 router.use('/new_comment' , commentRoute)
 
