@@ -5,6 +5,8 @@ const conatactController = require('../../controller/frontControllers/contactCon
 
 router.get('/', homeController.index)  
 router.get('/contact' , conatactController.index) 
+router.post('/send_msg' , conatactController.storeMessage) 
+
 
 
 module.exports = router
