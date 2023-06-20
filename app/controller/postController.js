@@ -8,7 +8,7 @@ exports.index =async(req, res) => {
    
     const msg = req.flash();
 
-    const posts =await postModel.getAll();
+    const posts =await postModel.showAll();
     const allPost= posts.map(post=>({
     ...post, 
     created_at: moment(post.created_at).format('YYYY-MM-DD')

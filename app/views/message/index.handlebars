@@ -1,0 +1,84 @@
+ <style>
+
+  .alert{
+    padding: 1px;
+    width: 83%;
+    border: 1px solid green;
+    border-radius: 13px;
+    background-color: #00800036;
+  }
+  .alert h6 {
+    color: #105e1b;
+    text-align: center;
+  }
+ </style>
+ <div class="container-fluid py-4">
+   
+      <div class="row">
+           <div class="col-3 d-flex align-items-center">
+                          {{#if msg.success}}
+                          <div class="alert">
+                             <h6>{{msg.success}}</h6>
+                          </div>
+                        
+                         {{/if}}
+                    </div>
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-header pb-0">
+              <h6>Posts Table</h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">User_name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Subject</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
+                  
+                      <th class="text-secondary opacity-7"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each allMessage}}
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1">
+                       
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">{{user_name}}</h6>
+                            <p class="text-xs text-secondary mb-0">{{email}}</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <h6 class="mb-0 text-sm">{{subject}}</h6>
+                        <p class="text-xs font-weight-bold mb-0">{{message}}</p>
+                        
+                      </td>
+                      <td class="align-middle text-center text-sm">
+                         <p class="text-xs font-weight-bold mb-0">{{created_at}}</p>
+                      </td>
+                
+
+
+                      <td class="align-middle">                     
+                         <a href="/message/delete/{{id}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          Delete
+                        </a>
+                      </td>
+                    </tr>
+                    {{/each}}
+                    
+                   
+                   
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
