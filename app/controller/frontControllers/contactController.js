@@ -2,7 +2,9 @@ const contactModel = require('../../models/contactModel')
 
 exports.index = async(req , res) =>{
    
-    res.render('front/contact' , {layout: 'front' , showSidebar: true}) 
+    const msg = req.flash()
+   
+    res.render('front/contact' , {layout: 'front' , showSidebar: true , msg}) 
 }
 
 exports.storeMessage = async(req ,res) => {
@@ -17,7 +19,8 @@ exports.storeMessage = async(req ,res) => {
 
     const store_data = contactModel.stor(data);
      if(store_data) {
-        res.redirect('/');
+        req.flash('success' , 'Successfully Sent Your Message!')
+        res.redirect('/contact');
      }
 }
 

@@ -1,5 +1,15 @@
 const db = require('../../database/mysql')
 
+exports.showAll=async()=>{
+  
+    const [posts] = await db.query(
+        `SELECT p.* , u.full_name FROM posts
+         p join users u on p.author_id = u.id
+         `);
+   
+    return posts; 
+}
+
 exports.getAll=async(page, perPage)=>{
     const offset = (page - 1) * perPage;
     const [posts] = await db.query(
