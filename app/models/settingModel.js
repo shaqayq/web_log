@@ -6,8 +6,6 @@ exports.getAll=async(req,res)=>{
     return setting; 
 }
 
-
-
 exports.update = async(updateFeilds)=>{
 
     const updateQuery = Object.keys(updateFeilds).map(setting_name => {

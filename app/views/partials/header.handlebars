@@ -4,7 +4,7 @@
         <div class="row align-items-center py-2 px-lg-5">
             <div class="col-lg-4">
                 <a href="" class="navbar-brand d-none d-lg-block">
-                    <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">News</span>Room</h1>
+                    <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">Technology</span>News</h1>
                 </a>
             </div>
            
@@ -36,8 +36,12 @@
                         </div>
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
-                    <a href="auth/signup" class="nav-item nav-link">Sign up</a>
-                    <a href="auth/login" class="nav-item nav-link">Login</a>
+                    {{#isEqual setting.user_can_register 1}}
+                    
+                    <a href="/auth/signup" class="nav-item nav-link">Sign up</a>
+                  
+                    {{/isEqual}}
+                    <a href="/auth/login" class="nav-item nav-link">Login</a>
                 </div>
                 <div class="input-group ml-auto" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control" placeholder="Keyword">

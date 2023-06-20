@@ -29,8 +29,10 @@
                     <!-- Comment List End -->
 
                    <!-- Comment Form Start -->
+                   {{#isEqual setting.user_can_comment 1}}
                 <div class="bg-light mb-3" style="padding: 30px;">
              
                 {{> comment_form post= post.id}}
                 </div>
+                {{/isEqual}}
                 <!-- Comment Form End -->
