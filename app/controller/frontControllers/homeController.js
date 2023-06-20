@@ -1,11 +1,12 @@
 const postModel = require('../../models/postModel')
 const moment = require('moment')
 const word_limit = require('../../presenter/post_present')
+const settingModel = require('../../models/settingModel')
 
 exports.index = async(req , res) =>{
     const page = 'page' in req.query ? parseInt(req.query.page) : 1;
-    const perPage = 4 ;
-
+    const perPage = parseInt(await settingModel.setConfig('content_per_page')) ;
+   
     const all_post =await postModel.getAll(page , perPage);
     const total_post = await postModel.countPost();
     const total_page = Math.ceil(total_post /perPage);

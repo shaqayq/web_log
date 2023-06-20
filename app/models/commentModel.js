@@ -26,12 +26,12 @@ exports.approve = async(id)=>{
     return result;
 }
 
-// exports.findById = async(id)=>{
-//     const result = await db.query("SELECT * FROM posts WHERE id=?" , id)
-//     return result
-// }
+exports.getSinglePostComment=async(id)=>{
+    const [comments] = await db.query('SELECT * FROM comments WHERE post_id=?' , id);
+    return comments; 
+}
 
-// exports.update = async(data , id)=>{
-//     const result = db.query('UPDATE posts SET ? WHERE id=?' , [data , id])
-//     return result;
-// }
+exports.countComment =async(id)=>{
+    const [count] =await db.query('SELECT COUNT(id) as totalComment FROM comments WHERE post_id=?' , id)
+    return count[0].totalComment;
+}

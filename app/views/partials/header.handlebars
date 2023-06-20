@@ -4,12 +4,10 @@
         <div class="row align-items-center py-2 px-lg-5">
             <div class="col-lg-4">
                 <a href="" class="navbar-brand d-none d-lg-block">
-                    <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">News</span>Room</h1>
+                    <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">Technology</span>News</h1>
                 </a>
             </div>
-            <div class="col-lg-8 text-center text-lg-right">
-                <img class="img-fluid" src="assets/img/ads-700x70.jpg" alt="">
-            </div>
+           
         </div>
     </div>
     <!-- Topbar End -->
@@ -28,16 +26,22 @@
                 <div class="navbar-nav mr-auto py-0">
 
                     <a href="/" class="nav-item nav-link active">Home</a>
-                    <a href="single.html" class="nav-item nav-link">Single News</a>
+                    <a href="single.html" class="nav-item nav-link">About us</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Category</a>
                         <div class="dropdown-menu rounded-0 m-0">
-                            <a href="#" class="dropdown-item">Menu item 1</a>
-                            <a href="#" class="dropdown-item">Menu item 2</a>
-                            <a href="#" class="dropdown-item">Menu item 3</a>
+                            <a href="#" class="dropdown-item">Web Technology</a>
+                            <a href="#" class="dropdown-item">Mobile App</a>
+                            <a href="#" class="dropdown-item">Cloud</a>
                         </div>
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    {{#isEqual setting.user_can_register 1}}
+                    
+                    <a href="/auth/signup" class="nav-item nav-link">Sign up</a>
+                  
+                    {{/isEqual}}
+                    <a href="/auth/login" class="nav-item nav-link">Login</a>
                 </div>
                 <div class="input-group ml-auto" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control" placeholder="Keyword">

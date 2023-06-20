@@ -6,8 +6,6 @@ exports.getAll=async(req,res)=>{
     return setting; 
 }
 
-
-
 exports.update = async(updateFeilds)=>{
 
     const updateQuery = Object.keys(updateFeilds).map(setting_name => {
@@ -15,4 +13,9 @@ exports.update = async(updateFeilds)=>{
     })
     const result = db.query(`${updateQuery.join(';')}`);
     return result;
+}
+
+exports.setConfig =async(key)=>{
+    const [config] = await db.query('SELECT setting_value FROM setting WHERE setting_name =? LIMIT 1' ,[key]);
+    return config.length > 0 ? config[0].setting_value : null;
 }
