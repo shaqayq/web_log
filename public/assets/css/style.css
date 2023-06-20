@@ -2356,6 +2356,7 @@ textarea.form-control {
 
 .btn:not(:disabled):not(.disabled) {
   cursor: pointer;
+  background-color: #cb0c9f;
 }
 
 a.btn.disabled,
