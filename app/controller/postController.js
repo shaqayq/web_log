@@ -1,8 +1,8 @@
 const { validationResult  , body} = require('express-validator');
 const moment = require('moment')
 const postModel = require('../models/postModel');
-
-
+const {v4: uuid4}= require('uuid')
+const path = require('path');
 
 exports.index =async(req, res) => {
    
@@ -39,6 +39,10 @@ exports.store = async (req, res) => {
     return res.render('newPost', { errors: errors.array() });
   } 
 
+  const fileEXT = req.files.img.name.split('.')[1];
+ 
+  const newFileName = `${uuid4()}.${fileEXT}`;
+
   const { title, slug, content, status } = req.body;
   const data = {
     author_id: 1,
@@ -46,14 +50,28 @@ exports.store = async (req, res) => {
     slug: slug,
     content: content,
     status: status,
+    img: newFileName
   };
 
-   
+
  
    const insert= postModel.storePost(data);
+
    if(insert){
-    req.flash('success', 'Post add successfully!')
-    return res.redirect("/post")
+    if(req.files.img){
+    
+    
+     const projectRootDir = path.resolve(__dirname, '../../');
+    const newPath = path.join(projectRootDir, 'public', 'photos', newFileName);
+
+    console.log(projectRootDir);
+     req.files.img.mv(newPath , function(err) {
+       console.log(err);
+     });
+
+    }
+     req.flash('success', 'Post add successfully!')
+     return res.redirect("/post")
    }
  
  
@@ -74,8 +92,8 @@ exports.deletePost = (req , res) => {
 
 exports.findPost = async(req , res) => {
 
-  const {postId} = req.query; 
-  const [post] = await postModel.findById(postId);
+  const {postid} = req.query; 
+  const [post] = await postModel.findById(postid);
 
   return res.render('post/editPost', {layout: 'main' , post , helpers:{
     isSelectedStatus: function (status, option) {
