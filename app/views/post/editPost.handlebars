@@ -23,20 +23,12 @@
               <div class="card-header text-center pt-4">
                 <h5>Edit Post</h5>
               </div>
-             {{!-- {{#if errors}}
-              <div class="error-messages">
-                <ul>
-                  {{#each errors}}
-                    <li>{{msg}}</li>
-                  {{/each}}
-                </ul>
-              </div>
-            {{/if}}  --}}
+           
             {{#each post}}
           
            
               <div class="card-body">
-                <form role="form text-left" action="/post/update/{{id}}" method="post">
+                <form role="form text-left" action="/post/update/{{id}}" method="post" enctype="multipart/form-data">
                  <div class="row">
                     <div class="mb-3 col-lg-6">
                         <label>Post Title:</label>
@@ -48,13 +40,19 @@
                     <input type="text" class="form-control" placeholder="Slug" aria-label="Slug" name="slug" value="{{slug}}">
                   </div>
                  </div>
-                  
-                  <div class="mb-3">
+                    <div class="row">
+                   <div class="mb-3  col-lg-6">
                      <label>Post Content:</label>
-                   <textarea name="content" class="form-control" aria-label="Content" aria-describedby="email-addon" heigth="200px">
-                    {{content}}
-                   </textarea>
+                   <textarea name="content" class="form-control" aria-label="Content" aria-describedby="email-addon" heigth="200px">{{content}}</textarea>
                   </div>
+
+                    <div class="mb-3 col-lg-6">
+                        <label>Post Image:</label>
+                    <input type="file" class="form-control" placeholder="Title" aria-label="Title" name="img" >
+                
+                  </div>
+                 </div>
+                
                   <h6>Status</h6>
                   <div class="form-check ">
                     <input class="form-check-input" type="radio" name="status" value="0" id="flexCheckDefault" {{#isSelectedStatus 0}} checked{{/isSelectedStatus}}><p>Draft</p>

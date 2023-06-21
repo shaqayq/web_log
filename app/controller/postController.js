@@ -42,10 +42,12 @@ exports.store = async (req, res) => {
   const fileEXT = req.files.img.name.split('.')[1];
  
   const newFileName = `${uuid4()}.${fileEXT}`;
+  const user_Session= req.session.user
 
   const { title, slug, content, status } = req.body;
+
   const data = {
-    author_id: 1,
+    author_id: user_Session.id,
     title: title,
     slug: slug,
     content: content,
@@ -92,8 +94,9 @@ exports.deletePost = (req , res) => {
 
 exports.findPost = async(req , res) => {
 
-  const {postid} = req.query; 
-  const [post] = await postModel.findById(postid);
+  const {postId} = req.query; 
+  
+  const [post] = await postModel.findById(postId);
 
   return res.render('post/editPost', {layout: 'main' , post , helpers:{
     isSelectedStatus: function (status, option) {
@@ -104,15 +107,35 @@ exports.findPost = async(req , res) => {
 
 
 exports.updatePost = (req , res) => {
+
+  const user_Session= req.session.user
+
   const {postId} = req.params;
   const { title, slug, content, status } = req.body;
+ 
   const data = {
-    author_id: 1,
+    author_id: user_Session.id,
     title: title,
     slug: slug,
     content: content,
     status: status,
+  
   };
+
+  if(req.files){
+    const fileEXT = req.files.img.name.split('.')[1];
+    const newFileName = `${uuid4()}.${fileEXT}`;
+    data.img = newFileName
+    
+    const projectRootDir = path.resolve(__dirname, '../../');
+   const newPath = path.join(projectRootDir, 'public', 'photos', newFileName);
+
+   console.log(projectRootDir);
+    req.files.img.mv(newPath , function(err) {
+      console.log(err);
+    });
+
+   }
   postModel.update(data , postId)
   res.redirect('/post')
 }
