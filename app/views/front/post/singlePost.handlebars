@@ -1,38 +1,35 @@
- 
- <!-- News Detail Start -->
-                   <!-- News Detail Start -->
-                    <div class="position-relative mb-3">
-                    <img class="img-fluid w-100" src="/assets/img/news-700x435-2.jpg" style="object-fit: cover;">
-                    <div class="overlay position-relative bg-light">
-                        <div class="mb-3">
-                        
-                        <a href="">{{post.full_name}}</a>
-                        <span class="px-1">/</span>
-                        <span>{{post.created_at}}</span>
-                        </div>
-                        <div>
-                        <h3 class="mb-3">{{post.title}}</h3>
-                        <p>{{post.content}}</p>
-                        </div>
-                  
-                    </div>
-                    </div>
-                   
+<div class="position-relative mb-3">
+    <img class="img-fluid w-100" src="/assets/img/news-700x435-2.jpg" style="object-fit: cover;">
+    <div class="overlay position-relative bg-light">
+        <div class="mb-3">
 
-                    <!-- Comment List Start -->
-                   
-                    <div class="bg-light mb-3" style="padding: 30px;">
-                     
-                          {{> comment comments= comments count= totalComment}}    
-                    </div>
-                 
-                    <!-- Comment List End -->
+            <a href="">{{post.full_name}}</a>
+            <span class="px-1">/</span>
+            <span>{{post.created_at}}</span>
+        </div>
+        <div>
+            <h3 class="mb-3">{{post.title}}</h3>
+            <p>{{post.content}}</p>
+        </div>
 
-                   <!-- Comment Form Start -->
-                   {{#isEqual setting.user_can_comment 1}}
-                <div class="bg-light mb-3" style="padding: 30px;">
-             
-                {{> comment_form post= post.id}}
-                </div>
-                {{/isEqual}}
-                <!-- Comment Form End -->
+    </div>
+</div>
+
+
+<!-- Comment List Start -->
+
+<div class="bg-light mb-3" style="padding: 30px;">
+
+    {{> comment comments= comments count= totalComment}}
+</div>
+
+<!-- Comment List End -->
+
+<!-- Comment Form Start -->
+{{#isEqual setting.user_can_comment 1}}
+<div class="bg-light mb-3" style="padding: 30px;">
+
+    {{> comment_form post= post.id}}
+</div>
+{{/isEqual}}
+<!-- Comment Form End -->

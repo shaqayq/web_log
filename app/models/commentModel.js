@@ -27,11 +27,11 @@ exports.approve = async(id)=>{
 }
 
 exports.getSinglePostComment=async(id)=>{
-    const [comments] = await db.query('SELECT * FROM comments WHERE post_id=?' , id);
+    const [comments] = await db.query('SELECT * FROM comments WHERE post_id=? and status = 1' , id);
     return comments; 
 }
 
 exports.countComment =async(id)=>{
-    const [count] =await db.query('SELECT COUNT(id) as totalComment FROM comments WHERE post_id=?' , id)
+    const [count] =await db.query('SELECT COUNT(id) as totalComment FROM comments WHERE post_id=? and status = 1' , id)
     return count[0].totalComment;
 }

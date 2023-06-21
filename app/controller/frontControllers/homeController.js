@@ -27,7 +27,15 @@ exports.index = async(req , res) =>{
         created_at:  moment(post.created_at).format('YYYY-MM-DD'),
     }))
  
-    res.render('front/' , {layout: 'front' , posts , pagination}) 
+
+    const latest_post = await postModel.getLatest();
+    const latestPost =latest_post.map(post =>( {
+        ...post , 
+        content: word_limit.excerpt(post.content , 10) ,
+        created_at:  moment(post.created_at).format('YYYY-MM-DD'),
+    }))
+    
+    res.render('front/' , {layout: 'front' , posts , pagination , latestPost}) 
 }
 
 

@@ -8,7 +8,4 @@ router.get('/delete/:postId' , postController.deletePost)
 router.get('/editPost' , postController.findPost)
 router.post('/update/:postId' , postController.updatePost)
 
-
-
-
 module.exports = router

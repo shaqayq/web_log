@@ -1,7 +1,8 @@
 const { validationResult  , body} = require('express-validator');
 const moment = require('moment')
 const userModel = require('../models/userModel')
-
+const { v4: uuid4 } = require('uuid')
+const path = require('path');
 
 exports.index =async(req, res) => {
   const msg = req.flash();
@@ -35,6 +36,8 @@ exports.store = async (req, res) => {
     return res.render('newUser', { errors: errors.array() });
   } 
 
+  
+
   const { full_name, email, password, role } = req.body;
   const data = {
   
@@ -42,10 +45,24 @@ exports.store = async (req, res) => {
     email: email,
     password: password,
     role: role,
+   
   };
 
    const insert =userModel.storeUser(data);
    if(insert){
+    if (req.files) {
+      const fileEXT = req.files ? req.files.img.name.split('.')[1] : '';
+      const newFileName = `${uuid4()}.${fileEXT}`;
+      data.profile = newFileName
+      const projectRootDir = path.resolve(__dirname, '../../');
+      const newPath = path.join(projectRootDir, 'public', 'photos', 'users', newFileName);
+
+      console.log(projectRootDir);
+      req.files.img.mv(newPath, function (err) {
+        console.log(err);
+      });
+
+    }
     req.flash('success' , "User Added Successfully!!");
    return res.redirect("/user")
    }
@@ -85,6 +102,21 @@ exports.updateUser = (req , res) => {
     password: password,
     role: role
   };
+
+  if (req.files) {
+    const fileEXT = req.files.img.name.split('.')[1];
+    const newFileName = `${uuid4()}.${fileEXT}`;
+    data.profile = newFileName
+
+    const projectRootDir = path.resolve(__dirname, '../../');
+    const newPath = path.join(projectRootDir, 'public', 'photos', 'users', newFileName);
+
+    console.log(projectRootDir);
+    req.files.img.mv(newPath, function (err) {
+      console.log(err);
+    });
+
+  }
   userModel.update(data , userId)
   res.redirect('/user')
 }

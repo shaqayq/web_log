@@ -5,6 +5,7 @@ const flash = require('connect-flash')
 const MySQLStore = require('express-mysql-session')(session)
 const exhbs= require('express-handlebars')
 const Handlebars = require('handlebars')
+const fileUpload = require('express-fileupload')
 
 const mysqlOptions = {
   host: process.env.MYSQL_HOST,
@@ -26,6 +27,11 @@ module.exports = app =>{
    
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: false}));
+
+    app.use(fileUpload({
+      createParentPath: true , 
+      useTempFiles:true
+    }))
 
     app.use(cookiParser());
     app.use(session({

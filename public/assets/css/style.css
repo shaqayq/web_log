@@ -194,6 +194,7 @@ figure {
 img {
   vertical-align: middle;
   border-style: none;
+  border-radius: 14px 0;
 }
 
 svg {
@@ -2357,6 +2358,10 @@ textarea.form-control {
 .btn:not(:disabled):not(.disabled) {
   cursor: pointer;
   background-color: #cb0c9f;
+}
+
+.reply{
+  background-color:#cb0c9f36;
 }
 
 a.btn.disabled,
@@ -7409,6 +7414,8 @@ button.bg-dark:focus {
   margin-bottom: 1rem !important;
 }
 
+
+
 .ml-3,
 .mx-3 {
   margin-left: 1rem !important;
@@ -7556,6 +7563,7 @@ button.bg-dark:focus {
 .pl-3,
 .px-3 {
   padding-left: 1rem !important;
+  border-radius: 14px;
 }
 
 .p-4 {
@@ -7580,6 +7588,7 @@ button.bg-dark:focus {
 .pl-4,
 .px-4 {
   padding-left: 1.5rem !important;
+  border-radius: 14px 0;
 }
 
 .p-5 {
@@ -9568,10 +9577,11 @@ h6,
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
-  background: rgba(0, 0, 0, 0.3);
+  background: #fff;
   z-index: 1;
   border-radius: 0 0 16px 16px;
 }
+
 
 .page-header {
   height: 400px;
