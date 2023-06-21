@@ -33,7 +33,7 @@
               </div>
             {{/if}} 
               <div class="card-body">
-                <form role="form text-left" action="/user/store" method="post">
+                <form role="form text-left" action="/user/store" method="post" enctype="multipart/form-data">
                  <div class="row">
                     <div class="mb-3 col-lg-6">
                         <label>full_name:</label>
@@ -46,9 +46,18 @@
                   </div>
                  </div>
                   
-                  <div class="mb-3">
-                     <label>password:</label>
-                     <input type="password" class="form-control" placeholder="password.." aria-label="Slug" name="password">
+                  <div class="row">
+                    <div class="mb-3 col-lg-6">
+                      <label>password:</label>
+                      <input type="password" class="form-control" placeholder="password.." aria-label="Slug" name="password">
+                    </div>
+                     <div class="mb-3 col-lg-6">
+                        <label>Profile photo:</label>
+                    <input type="file" class="form-control" placeholder="Title" aria-label="Title" name="img">
+                
+                  </div>
+                  </div>
+                 
                   <h6>role</h6>
                   <div class="form-check ">
                     <input class="form-check-input" type="radio" name="role" value="0" id="flexCheckDefault" checked><p>User</p>

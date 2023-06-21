@@ -23,20 +23,12 @@
               <div class="card-header text-center pt-4">
                 <h5>Edit User</h5>
               </div>
-             {{!-- {{#if errors}}
-              <div class="error-messages">
-                <ul>
-                  {{#each errors}}
-                    <li>{{msg}}</li>
-                  {{/each}}
-                </ul>
-              </div>
-            {{/if}}  --}}
+         
             {{#each user}}
           
            
               <div class="card-body">
-                <form role="form text-left" action="/user/update/{{id}}" method="post">
+                <form role="form text-left" action="/user/update/{{id}}" method="post" enctype="multipart/form-data">
                  <div class="row">
                     <div class="mb-3 col-lg-6">
                         <label>Full_Name:</label>
@@ -49,10 +41,18 @@
                   </div>
                  </div>
                   
-                  <div class="mb-3">
-                     <label>Password:</label>
-                    <input type="text" class="form-control" placeholder="password.." aria-label="Slug" name="password" >
+                   <div class="row">
+                    <div class="mb-3 col-lg-6">
+                      <label>password:</label>
+                      <input type="password" class="form-control" placeholder="password.." aria-label="Slug" name="password">
+                    </div>
+                     <div class="mb-3 col-lg-6">
+                        <label>Profile photo:</label>
+                    <input type="file" class="form-control" placeholder="Title" aria-label="Title" name="img">
+                
                   </div>
+                  </div>
+
                   <h6>Status</h6>
                   <div class="form-check ">
                     <input class="form-check-input" type="radio" name="role" value="0" id="flexCheckDefault" {{#isSelectedRole 0}} checked{{/isSelectedRole}}><p>User</p>
