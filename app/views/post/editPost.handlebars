@@ -24,7 +24,7 @@
                 <h5>Edit Post</h5>
               </div>
            
-            {{#each post}}
+           
           
            
               <div class="card-body">
@@ -32,18 +32,18 @@
                  <div class="row">
                     <div class="mb-3 col-lg-6">
                         <label>Post Title:</label>
-                    <input type="text" class="form-control" placeholder="Title" aria-label="Title" name="title" value="{{title}}">
+                    <input type="text" class="form-control" placeholder="Title" aria-label="Title" name="title" value="{{post.title}}">
                 
                   </div>
                   <div class="mb-3 col-lg-6">
                      <label>Post Slug:</label>
-                    <input type="text" class="form-control" placeholder="Slug" aria-label="Slug" name="slug" value="{{slug}}">
+                    <input type="text" class="form-control" placeholder="Slug" aria-label="Slug" name="slug" value="{{post.slug}}">
                   </div>
                  </div>
                     <div class="row">
                    <div class="mb-3  col-lg-6">
                      <label>Post Content:</label>
-                   <textarea name="content" class="form-control" aria-label="Content" aria-describedby="email-addon" heigth="200px">{{content}}</textarea>
+                   <textarea name="content" class="form-control" aria-label="Content" aria-describedby="email-addon" heigth="200px">{{post.content}}</textarea>
                   </div>
 
                     <div class="mb-3 col-lg-6">
@@ -63,7 +63,7 @@
                    <div class="form-check  ">
                     <input class="form-check-input" type="radio" name="status" value="2" id="flexCheckDefault" {{#isSelectedStatus 2}} checked{{/isSelectedStatus}}><p>Under Review</p>
                   </div>
-                   {{/each}}
+                
                   <div class="text-center">
                     <button type="submit" class="btn my-4 mb-2" style="">UPDATE POST</button>
                   </div>

@@ -95,12 +95,12 @@ exports.findPost = async (req, res) => {
 
   const { postId } = req.query;
 
-  const [post] = await postModel.findById(postId);
+  const post = await postModel.findById(postId);
 
   return res.render('post/editPost', {
     layout: 'main', post, helpers: {
       isSelectedStatus: function (status, option) {
-        return post[0].status === status ? option.fn(this) : option.inverse(this)
+        return post.status === status ? option.fn(this) : option.inverse(this)
       }
     }
   });
