@@ -64,7 +64,7 @@ exports.store = async (req, res) => {
     
     
      const projectRootDir = path.resolve(__dirname, '../../');
-    const newPath = path.join(projectRootDir, 'public', 'photos', newFileName);
+    const newPath = path.join(projectRootDir, 'public', 'photos','posts', newFileName);
 
     console.log(projectRootDir);
      req.files.img.mv(newPath , function(err) {
@@ -128,7 +128,7 @@ exports.updatePost = (req , res) => {
     data.img = newFileName
     
     const projectRootDir = path.resolve(__dirname, '../../');
-   const newPath = path.join(projectRootDir, 'public', 'photos', newFileName);
+   const newPath = path.join(projectRootDir, 'public', 'photos','posts', newFileName);
 
    console.log(projectRootDir);
     req.files.img.mv(newPath , function(err) {

@@ -10,6 +10,9 @@
         background-color: #cb0c9fa1;
         color: #fff;
     }
+    .post_img{
+        height: 168px;
+    }
 </style>
   <div class="row">
                         <div class="col-12">
@@ -21,7 +24,7 @@
                         {{#each posts}}
                         <div class="col-lg-6">
                             <div class="position-relative mb-3 post-card">
-                                <img class="img-fluid w-100" src="/photos/{{img}}" style="object-fit: cover;">
+                                <img class="img-fluid w-100 post_img" src="/photos/posts/{{img}}" style="object-fit: cover;">
                                 <div class="overlay position-relative bg-light">
                                     <div class="mb-2" style="font-size: 14px;">
                                         <a href="">{{full_name}}</a>
