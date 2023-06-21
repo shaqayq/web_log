@@ -1,5 +1,6 @@
 const db = require('../../database/mysql')
 
+//For Backend Posts List
 exports.showAll=async()=>{
   
     const [posts] = await db.query(
@@ -10,11 +11,13 @@ exports.showAll=async()=>{
     return posts; 
 }
 
+//For Front-End Posts List
 exports.getAll=async(page, perPage)=>{
     const offset = (page - 1) * perPage;
     const [posts] = await db.query(
         `SELECT p.* , u.full_name FROM posts
          p join users u on p.author_id = u.id
+         WHERE p.status= 1
          LIMIT ${offset} , ${perPage}
          `);
    
