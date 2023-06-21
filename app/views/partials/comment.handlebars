@@ -1,8 +1,9 @@
+
 <h3 class="mb-4">{{count}} Comments</h3>
 {{#each comments}}
   <div class="media">
     <img
-      src="/assets/img/user.jpg"
+      src="/assets/img/default.png"
       alt="Image"
       class="img-fluid mr-3 mt-1"
       style="width: 45px;"
@@ -11,13 +12,13 @@
       <h6><a href="">{{this.user_name}}</a>
         <small><i>{{this.created_at}}</i></small></h6>
       <p>{{this.comment}}</p>
-      <button class="btn btn-sm btn-outline-secondary">Reply</button>
+      <button class="btn btn-sm btn-outline-secondary reply">Reply</button>
       {{#if (hasChildren this.id)}}
       {{#each (getChildren this.id)}}
        
             <div class="media mt-4">
         <img
-          src="/assets/img/user.jpg"
+          src="/assets/img/default.png"
           alt="Image"
           class="img-fluid mr-3 mt-1"
           style="width: 45px;"
@@ -26,7 +27,7 @@
           <h6><a href="">{{this.user_name}}</a>
             <small><i>{{this.created_at}}</i></small></h6>
           <p>{{this.comment}}.</p>
-          <button class="btn btn-sm btn-outline-secondary">Reply</button>
+          <button class="btn btn-sm btn-outline-secondary reply">Reply</button>
         </div>
       </div>
 

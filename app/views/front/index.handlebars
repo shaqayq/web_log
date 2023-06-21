@@ -1,4 +1,3 @@
-
 <style>
     #pagination{
        display: flex;
@@ -13,6 +12,10 @@
     .post_img{
         height: 168px;
     }
+    .post_card :hover {
+       border: 1px solid;
+    }
+   
 </style>
   <div class="row">
                         <div class="col-12">
@@ -22,8 +25,8 @@
                             </div>
                         </div>
                         {{#each posts}}
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3 post-card">
+                        <div class="col-lg-6 card_post">
+                            <div class="position-relative mb-3 ">
                                 <img class="img-fluid w-100 post_img" src="/photos/posts/{{img}}" style="object-fit: cover;">
                                 <div class="overlay position-relative bg-light">
                                     <div class="mb-2" style="font-size: 14px;">
