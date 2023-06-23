@@ -17,8 +17,7 @@
     - JavaScript
     - MySQL
 
-## Live Demo
-[Live Demo Link]() 
+
 
 ## Getting Started
 
