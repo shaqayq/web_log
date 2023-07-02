@@ -18,6 +18,8 @@
     - MySQL
 
 
+# Live Demo
+You can check the blog at this [Link](https://tech-news-ubrq.onrender.com/)
 
 ## Getting Started
 
