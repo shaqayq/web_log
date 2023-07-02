@@ -19,8 +19,7 @@
 
 
 # Live Demo
-You can check the blog at this [Link](https://tech-news-ubrq.onrender.com/)
-** Note ** : For access in admin panel you can create account and login. 
+You can check the blog at this [Link](https://tech-news-ubrq.onrender.com/) ( For access in admin panel you can create account and login. )
 
 
 ## Getting Started
